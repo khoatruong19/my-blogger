@@ -1,0 +1,12 @@
+build/
+node_modules/
+package-lock.json
+yarn.lock
+bun.lockb
+package.json
+ .eslintrc.json
+/.next/
+.cache
+public
+next-env.d.ts
+next.config.ts
