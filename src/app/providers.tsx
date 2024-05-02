@@ -1,10 +1,10 @@
 import { PropsWithChildren } from 'react';
-import { ClerkProvider } from '@clerk/nextjs';
+import ConvexClientProvider from '@/providers/ConvexClientProvider';
 
 const Providers = ({ children }: PropsWithChildren) => {
   return (
     <>
-      <ClerkProvider>{children}</ClerkProvider>
+      <ConvexClientProvider>{children}</ConvexClientProvider>
     </>
   );
 };
