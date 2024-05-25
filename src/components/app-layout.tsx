@@ -7,7 +7,7 @@ const AppLayout = ({ children }: PropsWithChildren) => {
   return (
     <main className='flex-start flex min-h-screen bg-secondary'>
       {isAuth && <Sidebar />}
-      <section className='flex-1 rounded-bl-[2rem] rounded-tl-[2rem] border bg-white px-10 py-2'>
+      <section className='max-h-screen flex-1 overflow-y-auto rounded-bl-[2rem] rounded-tl-[2rem] border bg-white px-12 py-2'>
         <Topbar />
         {children}
       </section>

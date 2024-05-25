@@ -28,6 +28,7 @@ const NavItem = ({
   const pathname = usePathname();
 
   const { label, icon: Icon, activeIcon: ActiveIcon } = item;
+
   const path = onClick ? pathname : item.path;
   const isActiveVerified = pathname === path && isActive;
 
@@ -42,7 +43,7 @@ const NavItem = ({
             isActiveVerified ? activeClassname : ''
           )}
         >
-          {isActive ? <ActiveIcon className={iconClassname} /> : <Icon className={iconClassname} />}
+          {isActiveVerified ? <ActiveIcon className={iconClassname} /> : <Icon className={iconClassname} />}
           {label}
         </NavigationMenuLink>
       </Link>

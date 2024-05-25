@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -18,7 +17,7 @@ const UserDropdown = () => {
         <div className='flex items-center gap-3'>
           <h2 className='text-xl font-semibold'>Khoa Truong</h2>
           <Avatar className='h-12 w-12'>
-            <AvatarImage src='https://github.com/shadcn.png' alt='@shadcn' />
+            <AvatarImage src='https://scontent.fsgn2-4.fna.fbcdn.net/v/t39.30808-6/438275054_3763619813883504_8913566025353382913_n.jpg?stp=cp6_dst-jpg&_nc_cat=101&ccb=1-7&_nc_sid=5f2048&_nc_ohc=RNn78psFVjoQ7kNvgFOP9WI&_nc_ht=scontent.fsgn2-4.fna&oh=00_AYCi34s6dEmd2q4NaA3LldWsHRISlOgptCI8rIqDXuV0dA&oe=6657E4A0' alt='@shadcn' />
             <AvatarFallback>KT</AvatarFallback>
           </Avatar>
         </div>

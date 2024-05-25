@@ -1,9 +1,9 @@
-import React from 'react';
 import { RiSearch2Line } from 'react-icons/ri';
 import { Input, InputProps } from '@/components/ui/input';
 import { cn } from '@/lib/utils';
+import { forwardRef } from 'react';
 
-const Searcher = React.forwardRef<HTMLInputElement, InputProps>(({ className, ...props }, ref) => {
+const Searcher = forwardRef<HTMLInputElement, InputProps>(({ className, ...props }, ref) => {
   return (
     <div
       className={cn(

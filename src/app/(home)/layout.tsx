@@ -1,9 +1,14 @@
-import SectionLayout from '@/components/section-layout';
+import PageLayout from '@/components/page-layout';
+import { Suspense } from 'react';
 
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return <SectionLayout pageTitle='Discover'>{children}</SectionLayout>;
+  return (
+    <PageLayout pageTitle='Discover'>
+      <Suspense fallback={<p>Loading</p>}>{children}</Suspense>
+    </PageLayout>
+  );
 }

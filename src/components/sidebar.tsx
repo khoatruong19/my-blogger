@@ -8,7 +8,7 @@ import NavItem from './nav-item';
 
 const Sidebar = () => {
   return (
-    <aside className='flex w-[96px] flex-col items-center gap-28 py-7'>
+    <aside className='flex w-[96px] flex-col items-center gap-28 pt-12'>
       <Image alt='logo' src={LogoImg} width={32} height={32} objectFit='cover' />
       <NavigationMenu>
         <NavigationMenuList className='flex flex-col gap-5'>
