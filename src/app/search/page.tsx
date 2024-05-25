@@ -1,5 +1,5 @@
-import AppLayout from '@/components/app-layout';
+import SectionLayout from '@/components/section-layout';
 
 export default function SearchPage() {
-  return <AppLayout>search</AppLayout>;
+  return <SectionLayout pageTitle='Search'>search</SectionLayout>;
 }

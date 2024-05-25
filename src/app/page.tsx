@@ -1,5 +1,5 @@
-import AppLayout from '@/components/app-layout';
+import SectionLayout from '@/components/section-layout';
 
 export default function Home() {
-  return <AppLayout>hello</AppLayout>;
+  return <SectionLayout pageTitle='Discover'>hello</SectionLayout>;
 }

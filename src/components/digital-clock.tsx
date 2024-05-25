@@ -1,5 +1,6 @@
 import { getCurrentTime } from '@/app/utils/date';
 import React, { useEffect, useState } from 'react';
+import {format} from "date-fns"
 
 const DigitalClock = () => {
   let time = getCurrentTime();
@@ -19,7 +20,7 @@ const DigitalClock = () => {
   return (
     <div className='flex h-fit flex-col items-center justify-center gap-1'>
       <h2 className='text-5xl font-bold'>{clockTime}</h2>
-      <h5 className='text-sm font-extralight text-gray-400'>{new Date().toDateString()}</h5>
+      <h5 className='text-sm font-extralight text-gray-400'>{format(new Date(), "eeee, e, LLL.")}</h5>
     </div>
   );
 };
