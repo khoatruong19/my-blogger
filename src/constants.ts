@@ -1,7 +1,7 @@
 import { NavItem } from './types';
 import { AiOutlineHome, AiFillHome } from 'react-icons/ai';
-import { BiSolidSearchAlt2 } from 'react-icons/bi';
-import { BiSearchAlt2 } from 'react-icons/bi';
+import { CiSearch } from 'react-icons/ci';
+import { RiSearchFill } from 'react-icons/ri';
 
 export const NAV_ITEMS: NavItem[] = [
   {
@@ -12,8 +12,8 @@ export const NAV_ITEMS: NavItem[] = [
   },
   {
     label: 'Search',
-    icon: BiSearchAlt2,
-    activeIcon: BiSolidSearchAlt2,
+    icon: CiSearch,
+    activeIcon: RiSearchFill,
     path: '/search',
   },
 ];

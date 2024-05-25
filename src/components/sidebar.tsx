@@ -1,21 +1,22 @@
 'use client';
 
-import { NavigationMenu, NavigationMenuList } from './ui/navigation-menu';
-import NavItem from './nav-item';
-import { NAV_ITEMS } from '@/constants';
 import Image from 'next/image';
+import { NavigationMenu, NavigationMenuList } from '@/components/ui/navigation-menu';
+import { NAV_ITEMS } from '@/constants';
 import LogoImg from '@/assets/logo.png';
+import NavItem from './nav-item';
+
 
 const Sidebar = () => {
   return (
-    <aside className='flex w-[96px] flex-col items-center gap-10 py-7'>
+    <aside className='flex w-[96px] flex-col items-center gap-28 py-7'>
       <Image alt='logo' src={LogoImg} width={32} height={32} objectFit='cover' />
       <NavigationMenu>
         <NavigationMenuList className='flex flex-col gap-5'>
           {NAV_ITEMS.map((item) => (
             <NavItem
-              className='h-auto w-[70px] flex-col gap-2 rounded-xl p-3 text-xs hover:bg-primary/60'
-              activeClassname='bg-primary/90 font-bold'
+              className='text-xxs h-auto w-[70px] flex-col gap-1 rounded-xl p-3 font-extralight hover:bg-primary/60'
+              activeClassname='bg-primary/50 font-bold'
               iconClassname='w-6 h-6'
               key={item.path}
               item={item}

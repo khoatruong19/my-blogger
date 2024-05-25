@@ -1,9 +1,13 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
 import './globals.css';
 // import Providers from './providers';
+import { Nunito_Sans } from 'next/font/google';
+import clsx from 'clsx';
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Nunito_Sans({
+  subsets: ['latin'],
+  weight: ['200', '300', '400', '500', '600', '700', '800'],
+});
 
 export const metadata: Metadata = {
   title: 'My Blogger',
@@ -17,7 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
-      <body className={inter.className}>
+      <body className={clsx(inter.className)}>
         {/* <Providers>{children}</Providers> */}
         {children}
       </body>
