@@ -13,6 +13,8 @@ type NavItemProps = {
   className?: string;
   activeClassname?: string;
   iconClassname?: string;
+  isActive?: boolean;
+  onClick?: () => void;
 };
 
 const NavItem = ({
@@ -20,17 +22,25 @@ const NavItem = ({
   className = '',
   activeClassname = 'bg-accent',
   iconClassname = '',
+  isActive = true,
+  onClick,
 }: NavItemProps) => {
   const pathname = usePathname();
 
-  const { label, icon: Icon, activeIcon: ActiveIcon, path } = item;
-  const isActive = pathname === path;
+  const { label, icon: Icon, activeIcon: ActiveIcon } = item;
+  const path = onClick ? pathname : item.path;
+  const isActiveVerified = pathname === path && isActive;
 
   return (
-    <NavigationMenuItem>
+    <NavigationMenuItem onClick={onClick}>
       <Link href={path} legacyBehavior passHref>
         <NavigationMenuLink
-          className={cn(navigationMenuTriggerStyle(), className, isActive ? activeClassname : '')}
+          className={cn(
+            navigationMenuTriggerStyle(),
+            'h-auto w-[70px] flex-col gap-1 rounded-xl p-3 font-extralight hover:bg-primary/60',
+            className,
+            isActiveVerified ? activeClassname : ''
+          )}
         >
           {isActive ? <ActiveIcon className={iconClassname} /> : <Icon className={iconClassname} />}
           {label}

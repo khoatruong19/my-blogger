@@ -7,7 +7,7 @@ type SectionLayoutProps = PropsWithChildren & {
 const SectionLayout = ({ pageTitle, children }: SectionLayoutProps) => {
   return (
     <section>
-      <h1 className='mb-5 text-3xl font-semibold'>{pageTitle}</h1>
+      <h1 className='mb-7 text-3xl font-semibold'>{pageTitle}</h1>
       {children}
     </section>
   );
