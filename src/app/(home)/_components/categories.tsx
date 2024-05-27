@@ -9,8 +9,8 @@ const Categories = () => {
   const { category, handleAddCategoryParams } = useCategoryParams();
 
   return (
-    <NavigationMenu>
-      <NavigationMenuList className='flex gap-3'>
+    <NavigationMenu className='w-full'>
+      <NavigationMenuList className='w-full flex-wrap justify-start gap-3'>
         {CATEGORIES.map((item) => (
           <NavItem
             isActive={category === item.path}
