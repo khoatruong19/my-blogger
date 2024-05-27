@@ -40,7 +40,9 @@ const NavItem = ({
             navigationMenuTriggerStyle(),
             'h-auto w-[70px] flex-col gap-1 rounded-xl p-3 font-extralight hover:bg-primary/60',
             className,
-            isActiveVerified ? activeClassname : ''
+            {
+              [activeClassname]: isActiveVerified,
+            }
           )}
         >
           {isActiveVerified ? <ActiveIcon className={iconClassname} /> : <Icon className={iconClassname} />}
