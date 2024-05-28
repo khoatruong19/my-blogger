@@ -20,7 +20,7 @@ const DigitalClock = () => {
   return (
     <div className='flex h-fit flex-col items-center justify-center gap-1'>
       <h2 className='text-5xl font-bold'>{clockTime}</h2>
-      <h5 className='text-sm font-thin text-primary-foreground tracking-wide'>{format(new Date(), 'eeee, e LLL')}</h5>
+      <h5 className='text-sm font-thin text-foreground tracking-wide'>{format(new Date(), 'eeee, e LLL')}</h5>
     </div>
   );
 };

@@ -17,7 +17,7 @@ const Categories = () => {
             className='h-24 w-24 flex-col gap-2 bg-accent text-sm font-medium'
             key={item.label}
             item={item}
-            activeClassname='bg-primary/50 font-bold '
+            activeClassname='bg-primary/60 font-bold '
             iconClassname='w-6 h-6'
             onClick={() => handleAddCategoryParams(item.path)}
           />

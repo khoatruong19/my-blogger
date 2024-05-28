@@ -15,7 +15,7 @@ const Sidebar = () => {
           {NAV_ITEMS.map((item) => (
             <NavItem
               className='text-xxs'
-              activeClassname='bg-primary/50 font-bold'
+              activeClassname='bg-primary/60 font-bold'
               iconClassname='w-6 h-6'
               key={item.path}
               item={item}

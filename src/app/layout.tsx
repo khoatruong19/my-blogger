@@ -3,6 +3,7 @@ import './globals.css';
 import { Nunito_Sans } from 'next/font/google';
 import clsx from 'clsx';
 import AppLayout from '@/components/app-layout';
+import Providers from './providers';
 
 const inter = Nunito_Sans({
   subsets: ['latin'],
@@ -20,10 +21,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang='en'>
+    <html lang='en' suppressHydrationWarning>
       <body className={clsx(inter.className)}>
-        <AppLayout>{children}</AppLayout>
-        {/* <Providers>{children}</Providers> */}
+        <Providers>
+          <AppLayout>{children}</AppLayout>
+        </Providers>
       </body>
     </html>
   );

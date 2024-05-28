@@ -1,6 +1,6 @@
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { CiBookmark } from 'react-icons/ci';
-import React from 'react';
+import { MdNavigateNext } from 'react-icons/md';
 import { Button } from '@/components/ui/button';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 
@@ -49,9 +49,9 @@ const BlogSummarize = () => {
           standout feature of Go is its strong support for concurrency through goroutines and channels.
           Goroutines are lightweight threads managed by the Go runtime, allowing the efficient execution of
           numerous concurrent tasks. Channels enable safe communication and synchronization between
-          goroutines, simplifying concurrent programming. Go&apos;s robust standard library includes a wide array
-          of built-in packages for tasks like web development, cryptography, and file I/O. The language also
-          boasts a powerful toolchain with an efficient garbage collector, static analyzer, and built-in
+          goroutines, simplifying concurrent programming. Go&apos;s robust standard library includes a wide
+          array of built-in packages for tasks like web development, cryptography, and file I/O. The language
+          also boasts a powerful toolchain with an efficient garbage collector, static analyzer, and built-in
           support for testing and profiling. Ideal for developing microservices, distributed systems, and
           cloud-based applications, Go is widely adopted by companies such as Google, Dropbox, and Uber, who
           leverage its performance and scalability in high-demand environments.
@@ -60,9 +60,10 @@ const BlogSummarize = () => {
 
       <Button
         size='xl'
-        className='rounded-tl-none rounded-tr-none bg-primary/70 text-lg font-semibold hover:bg-primary'
+        className='group rounded-b-3xl rounded-tl-none rounded-tr-none bg-primary/70 font-semibold hover:bg-primary text-foreground'
       >
-        Go read
+        <span className='text-lg'>Go read</span>
+        <MdNavigateNext className='h-7 w-7 transition-transform duration-300 ease-in-out group-hover:translate-x-2' />
       </Button>
     </div>
   );

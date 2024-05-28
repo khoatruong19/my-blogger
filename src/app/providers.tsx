@@ -1,10 +1,14 @@
 import { PropsWithChildren } from 'react';
-import ConvexClientProvider from '@/providers/ConvexClientProvider';
+import { ThemeProvider } from '@/providers';
 
 const Providers = ({ children }: PropsWithChildren) => {
   return (
     <>
-      <ConvexClientProvider>{children}</ConvexClientProvider>
+      {/* <ConvexClientProvider> */}
+      <ThemeProvider attribute='class' defaultTheme='light'>
+        {children}
+      </ThemeProvider>
+      {/* </ConvexClientProvider> */}
     </>
   );
 };

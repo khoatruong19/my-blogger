@@ -7,12 +7,12 @@ import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { VariantProps, cva } from 'class-variance-authority';
 
-const blogContainerVariants = cva('flex w-full items-start bg-accent rounded-3xl py-2', {
+const blogContainerVariants = cva('flex w-full items-start bg-accent rounded-3xl py-2 ', {
   variants: {
     layout: {
       default:
-        'hover:bg-secondary-foreground hover:text-secondary transition-colors duration-300 ease-in-out',
-      vertical: 'flex-col max-w-[350px] bg-transparent border-1 py-0 cursor-pointer',
+        'hover:bg-secondary-foreground hover:text-secondary transition-colors duration-200 ease-in-out',
+      vertical: 'flex-col max-w-[350px] bg-transparent border-1 py-0 cursor-pointe shadow-md',
     },
   },
   defaultVariants: {
@@ -84,17 +84,17 @@ const BlogCard = ({
         className={cn(
           'flex items-start justify-between gap-5 py-1 pl-0 pr-4 w-full',
           {
-            'px-3 pb-2': isLayoutVertial,
+            'px-3 pb-3 pt-2': isLayoutVertial,
           },
           contentClassname
         )}
       >
         <div className='flex flex-col gap-6'>
           <div className={cn(blogInfoVariants({ layout }))}>
-            <p className='font-extralight'>Technical</p>
+            <p className='font-extralight'>Tech</p>
             <h3
               className={cn('line-clamp-1 text-ellipsis text-lg font-semibold', {
-                'line-clamp-2 hover:text-primary': isLayoutVertial,
+                'line-clamp-2 hover:text-primary cursor-pointer': isLayoutVertial,
               })}
             >
               Google Colab là gì? Hướng dẫn sử dụng Google Colab cho người mới
@@ -113,7 +113,7 @@ const BlogCard = ({
             <Button variant={null} className='p-0 hover:text-white '>
               <BsThreeDotsVertical className='h-5 w-5' />
             </Button>
-            <Button className='h-14 w-14 rounded-full bg-white pl-5 shadow-lg'>
+            <Button className='h-14 w-14 rounded-full bg-background pl-5 shadow-lg text-foreground'>
               <FaPlay className='h-6 w-6' />
             </Button>
           </div>
