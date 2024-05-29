@@ -12,7 +12,7 @@ const blogContainerVariants = cva('flex w-full items-start bg-accent rounded-3xl
     layout: {
       default:
         'hover:bg-secondary-foreground hover:text-secondary transition-colors duration-200 ease-in-out',
-      vertical: 'flex-col max-w-[350px] bg-transparent border-1 py-0 cursor-pointe shadow-md',
+      vertical: 'flex-col max-w-[350px] bg-transparent border-1 py-0 cursor-pointer shadow-md',
     },
   },
   defaultVariants: {
@@ -77,12 +77,16 @@ const BlogCard = ({
     <Card className={cn(blogContainerVariants({ layout, className }))}>
       <CardHeader className={cn(headerVariants({ layout, className: headerClassname }))}>
         <div className={cn(imageVariants({ layout, className: imageClassname }))}>
-          <Image alt='' src='https://statics.cdn.200lab.io/2023/06/interface-trong-golang-cach-dung-chinh-xac-2.jpg?width=500' fill />
+          <Image
+            alt=''
+            src='https://statics.cdn.200lab.io/2023/06/interface-trong-golang-cach-dung-chinh-xac-2.jpg?width=500'
+            fill
+          />
         </div>
       </CardHeader>
       <CardContent
         className={cn(
-          'flex items-start justify-between gap-5 py-1 pl-0 pr-4 w-full',
+          'flex w-full items-start justify-between gap-5 py-1 pl-0 pr-4',
           {
             'px-3 pb-3 pt-2': isLayoutVertial,
           },
@@ -94,7 +98,7 @@ const BlogCard = ({
             <p className='font-extralight'>Tech</p>
             <h3
               className={cn('line-clamp-1 text-ellipsis text-lg font-semibold', {
-                'line-clamp-2 hover:text-primary cursor-pointer': isLayoutVertial,
+                'line-clamp-2 cursor-pointer hover:text-primary': isLayoutVertial,
               })}
             >
               Google Colab là gì? Hướng dẫn sử dụng Google Colab cho người mới
@@ -113,7 +117,7 @@ const BlogCard = ({
             <Button variant={null} className='p-0 hover:text-white '>
               <BsThreeDotsVertical className='h-5 w-5' />
             </Button>
-            <Button className='h-14 w-14 rounded-full bg-background pl-5 shadow-lg text-foreground'>
+            <Button className='h-14 w-14 rounded-full bg-background pl-5 text-foreground shadow-lg'>
               <FaPlay className='h-6 w-6' />
             </Button>
           </div>

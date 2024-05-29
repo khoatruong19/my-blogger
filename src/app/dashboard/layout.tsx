@@ -1,4 +1,4 @@
-import PageLayout from '@/components/page-layout';
+import BreadCrumbLayout from '@/components/breadcrumb-layout';
 import { Suspense } from 'react';
 
 export default function RootLayout({
@@ -7,8 +7,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <PageLayout pageTitle='Dashboard'>
+    <BreadCrumbLayout>
       <Suspense fallback={<p>Loading</p>}>{children}</Suspense>
-    </PageLayout>
+    </BreadCrumbLayout>
   );
 }
