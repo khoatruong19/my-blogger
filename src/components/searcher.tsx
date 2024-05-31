@@ -15,7 +15,7 @@ const Searcher = forwardRef<HTMLInputElement, InputProps>(({ className, ...props
       <Input
         {...props}
         type='search'
-        placeholder='Search posts'
+        placeholder='Search blogs'
         ref={ref}
         className='flex-1 border-0 bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0'
       />

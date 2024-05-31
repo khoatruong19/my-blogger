@@ -12,7 +12,6 @@ import { LuListFilter } from 'react-icons/lu';
 import { AiOutlinePlusCircle } from 'react-icons/ai';
 import { Input } from '@/components/ui/input';
 
-
 const BlogActions = () => {
   return (
     <Tabs className='flex items-center'>
