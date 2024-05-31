@@ -26,7 +26,7 @@ const TiptapNodes = ({ editor }: TiptapNodesProps) => {
       <div ref={tabsRef} className='h-5' />
       <Tabs
         className={cn('flex flex-wrap items-center gap-2', {
-          'sticky top-1 z-20': !isInView,
+          'sticky top-1.5 z-20': !isInView,
         })}
       >
         <TiptapNode

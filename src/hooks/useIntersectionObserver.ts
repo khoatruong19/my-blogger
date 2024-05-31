@@ -20,14 +20,11 @@ const useIntersectionObserver = <T extends HTMLElement>(
 
     const observerCallback = (entries: IntersectionObserverEntry[], observer: IntersectionObserver) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          setIsInView(true);
-          if (options.freezeOnceVisible) {
+        if (entry.isIntersecting && options.freezeOnceVisible) {
             observer.unobserve(entry.target);
-          }
-        } else {
-          setIsInView(false);
         }
+
+        setIsInView(entry.isIntersecting)
       });
     };
 
