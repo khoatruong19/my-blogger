@@ -6,47 +6,14 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { FiBell } from 'react-icons/fi';
 import { IoMoonSharp } from 'react-icons/io5';
 import { IoMdSunny } from 'react-icons/io';
 import { Button } from '@/components/ui/button';
 import { useTheme } from 'next-themes';
 import Link from 'next/link';
-
-const UserDropdown = () => {
-  const isAdmin = true;
-
-  return (
-    <DropdownMenu>
-      <DropdownMenuTrigger className='focus-visible:outline-none'>
-        <div className='flex items-center gap-3'>
-          <h2 className='text-xl font-semibold'>Khoa Truong</h2>
-          <Avatar className='h-12 w-12'>
-            <AvatarImage
-              src='https://scontent.fsgn2-4.fna.fbcdn.net/v/t39.30808-1/438275054_3763619813883504_8913566025353382913_n.jpg?stp=cp6_dst-jpg_p480x480&_nc_cat=101&ccb=1-7&_nc_sid=5f2048&_nc_ohc=MlSa1FIF5B0Q7kNvgHkOSPd&_nc_ht=scontent.fsgn2-4.fna&oh=00_AYDrV6DhshQADOtd7tHWtBAwkObfLa_LjuLbVjgIWM7UnA&oe=665DE61E'
-              alt='@shadcn'
-            />
-            <AvatarFallback>KT</AvatarFallback>
-          </Avatar>
-        </div>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent className='min-w-[200px] border shadow-md' align='end'>
-        <DropdownMenuLabel>My Account</DropdownMenuLabel>
-        <DropdownMenuSeparator />
-        {isAdmin && (
-          <DropdownMenuItem asChild>
-            <Link href='/dashboard'>Dashboard</Link>
-          </DropdownMenuItem>
-        )}
-        <DropdownMenuItem asChild>
-          <Link href='/profile'>Profile</Link>
-        </DropdownMenuItem>
-        <DropdownMenuItem className='focus:font-semibold focus:text-destructive'>Logout</DropdownMenuItem>
-      </DropdownMenuContent>
-    </DropdownMenu>
-  );
-};
+import { UserButton, useUser } from '@clerk/nextjs';
+import { Skeleton } from '@/components/ui/skeleton';
 
 const NotificationsDropdown = () => {
   return (
@@ -85,10 +52,41 @@ const ThemeToggle = () => {
 };
 
 const UserWidget = () => {
+  const { user, isLoaded } = useUser();
+
+  if (!isLoaded)
+    return (
+      <div className='flex items-center space-x-4'>
+        <Skeleton className='h-12 w-12 rounded-full' />
+        <div className='space-y-2'>
+          <Skeleton className='h-4 w-[250px]' />
+          <Skeleton className='h-4 w-[200px]' />
+        </div>
+      </div>
+    );
+
   return (
     <div className='flex items-center gap-5'>
-      <UserDropdown />
-      <NotificationsDropdown />
+      {user ? (
+        <>
+          <UserButton
+            showName
+            appearance={{
+              elements: {
+                userButtonAvatarBox: 'w-12 h-12 ml-1',
+                userButtonPopoverCard: 'w-[250px]',
+                userButtonOuterIdentifier: 'text-lg font-semibold',
+              },
+            }}
+          />
+          <NotificationsDropdown />
+        </>
+      ) : (
+        <Link href='/sign-in'>
+          <Button className='font-bold'>Login</Button>
+        </Link>
+      )}
+
       <ThemeToggle />
     </div>
   );
