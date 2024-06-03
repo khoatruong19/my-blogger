@@ -75,7 +75,7 @@ const UserWidget = () => {
               elements: {
                 userButtonAvatarBox: 'w-12 h-12 ml-1',
                 userButtonPopoverCard: 'w-[250px]',
-                userButtonOuterIdentifier: 'text-lg font-semibold',
+                userButtonOuterIdentifier: 'text-lg font-semibold text-foreground',
               },
             }}
           />
