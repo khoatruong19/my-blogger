@@ -1,7 +1,7 @@
 import BreadCrumbLayout from '@/components/breadcrumb-layout';
 import { Suspense } from 'react';
 
-export default function RootLayout({
+export default function DashboardLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;

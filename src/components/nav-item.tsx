@@ -30,7 +30,7 @@ const NavItem = ({
   const { label, icon: Icon, activeIcon: ActiveIcon } = item;
 
   const path = onClick ? pathname : item.path;
-  const isActiveVerified = pathname === path && isActive;
+  const isActiveVerified = `/${pathname.split('/')[1]}` === path && isActive;
 
   return (
     <NavigationMenuItem onClick={onClick}>

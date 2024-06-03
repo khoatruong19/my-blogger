@@ -1,6 +1,6 @@
 'use client';
 
-import { PropsWithChildren } from 'react';
+import { Fragment, PropsWithChildren } from 'react';
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -31,7 +31,7 @@ const BreadCrumbLayout = ({ children }: PropsWithChildren) => {
       <Breadcrumb className='mb-5'>
         <BreadcrumbList className='text-lg font-medium capitalize'>
           {pathItems.map((item, idx) => (
-            <>
+            <Fragment key={item.path}>
               {idx === pathItems.length - 1 || isParam(item.name) ? (
                 <>
                   <BreadcrumbItem>
@@ -47,13 +47,13 @@ const BreadCrumbLayout = ({ children }: PropsWithChildren) => {
                 </>
               ) : (
                 <>
-                  <BreadcrumbItem key={item.path}>
+                  <BreadcrumbItem>
                     <BreadcrumbLink href={`/${item.path}`}>{item.name}</BreadcrumbLink>
                   </BreadcrumbItem>
                   <BreadcrumbSeparator />
                 </>
               )}
-            </>
+            </Fragment>
           ))}
         </BreadcrumbList>
       </Breadcrumb>

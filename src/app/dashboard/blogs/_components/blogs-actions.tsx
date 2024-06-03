@@ -9,8 +9,8 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { LuListFilter } from 'react-icons/lu';
-import { AiOutlinePlusCircle } from 'react-icons/ai';
 import { Input } from '@/components/ui/input';
+import CreateBlogDialog from './create-blog-dialog';
 
 const BlogActions = () => {
   return (
@@ -40,10 +40,7 @@ const BlogActions = () => {
             <DropdownMenuCheckboxItem>Archived</DropdownMenuCheckboxItem>
           </DropdownMenuContent>
         </DropdownMenu>
-        <Button size='sm' className='h-7 gap-1'>
-          <AiOutlinePlusCircle className='h-3.5 w-3.5' />
-          <span className='sr-only sm:not-sr-only sm:whitespace-nowrap'>Add Blog</span>
-        </Button>
+        <CreateBlogDialog />
       </div>
     </Tabs>
   );
