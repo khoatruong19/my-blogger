@@ -1,6 +1,5 @@
 import { PropsWithChildren } from 'react';
-import { ThemeProvider } from '@/providers';
-import ConvexClientProvider from '@/providers/ConvexClientProvider';
+import { ThemeProvider, ConvexClientProvider } from '@/providers';
 
 const Providers = ({ children }: PropsWithChildren) => {
   return (
