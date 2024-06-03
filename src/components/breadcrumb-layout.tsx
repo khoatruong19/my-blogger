@@ -9,10 +9,14 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from '@/components/ui/breadcrumb';
-import { usePathname } from 'next/navigation';
+import { useParams, usePathname } from 'next/navigation';
+import { cn } from '@/lib/utils';
 
 const BreadCrumbLayout = ({ children }: PropsWithChildren) => {
   const paths = usePathname();
+  const params = useParams();
+
+  const paramValues = Object.values(params);
 
   const pathNames = paths.split('/').filter((path) => path);
   const pathItems = pathNames.map((path, i) => ({
@@ -20,16 +24,27 @@ const BreadCrumbLayout = ({ children }: PropsWithChildren) => {
     path: pathNames.slice(0, i + 1).join('/'),
   }));
 
+  const isParam = (value: string) => paramValues.includes(value);
+
   return (
     <>
       <Breadcrumb className='mb-5'>
-        <BreadcrumbList className='text-lg capitalize font-medium'>
+        <BreadcrumbList className='text-lg font-medium capitalize'>
           {pathItems.map((item, idx) => (
             <>
-              {idx === pathItems.length - 1 ? (
-                <BreadcrumbItem>
-                  <BreadcrumbPage className='font-bold'>{item.name}</BreadcrumbPage>
-                </BreadcrumbItem>
+              {idx === pathItems.length - 1 || isParam(item.name) ? (
+                <>
+                  <BreadcrumbItem>
+                    <BreadcrumbPage
+                      className={cn({
+                        'font-bold': !isParam(item.name),
+                      })}
+                    >
+                      {item.name}
+                    </BreadcrumbPage>
+                  </BreadcrumbItem>
+                  {isParam(item.name) && <BreadcrumbSeparator />}
+                </>
               ) : (
                 <>
                   <BreadcrumbItem key={item.path}>
