@@ -1,6 +1,6 @@
 import { v } from 'convex/values';
 
-export const vBlogCategory = v.union(
+export const vBlogStatus = v.union(
   v.literal('draft'),
   v.literal('in-progress'),
   v.literal('ready'),
@@ -9,6 +9,6 @@ export const vBlogCategory = v.union(
 
 export const vCreateBlogArgs = {
   title: v.string(),
-  category: vBlogCategory,
-  thumbnail: v.string(),
+  category: v.string(),
+  storageId: v.string(),
 };

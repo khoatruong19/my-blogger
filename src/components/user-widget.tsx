@@ -53,7 +53,7 @@ const ThemeToggle = () => {
 
 const UserWidget = () => {
   const { user, isLoaded } = useUser();
-  console.log({ user });
+
   if (!isLoaded)
     return (
       <div className='flex items-center space-x-4'>
@@ -64,7 +64,7 @@ const UserWidget = () => {
         </div>
       </div>
     );
-
+ 
   return (
     <div className='flex items-center gap-5'>
       {user ? (

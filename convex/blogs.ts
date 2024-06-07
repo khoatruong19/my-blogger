@@ -1,5 +1,5 @@
 import { query } from './_generated/server';
-import { v } from 'convex/values';
+import { ConvexError, v } from 'convex/values';
 import { vCreateBlogArgs } from './types';
 import { adminAuthMutation } from './utils';
 
@@ -15,12 +15,23 @@ export const getById = query({
 export const create = adminAuthMutation({
   args: vCreateBlogArgs,
   handler: async (ctx, args) => {
-    await ctx.db.insert('blogs', {
+    const { storageId, ...info } = args;
+
+    const url = (await ctx.storage.getUrl(storageId)) ?? '';
+    if (!url) throw new ConvexError('get image url fail!');
+
+    const blogId = await ctx.db.insert('blogs', {
       authorId: ctx.author._id,
-      ...args,
+      ...info,
       body: '',
       likes: [],
       status: 'in-progress',
+      thumbnail: {
+        storageId,
+        url,
+      },
     });
+
+    return blogId;
   },
 });

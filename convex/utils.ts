@@ -30,15 +30,7 @@ export const adminAuthAction = customAction(
 
 export const adminAuthMutation = customMutation(
   mutation,
-  customCtx(async (ctx) => {
-    const author = await getAuthorOrThrow(ctx);
-
-    if (!author) {
-      throw new ConvexError('must be admin to run this mutation');
-    }
-
-    return { author };
-  })
+  customCtx(async (ctx) => ({ author: await getAuthorOrThrow(ctx) }))
 );
 
 async function getAuthorOrThrow(ctx: QueryCtx | MutationCtx) {

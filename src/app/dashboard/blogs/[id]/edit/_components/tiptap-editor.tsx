@@ -62,7 +62,7 @@ const TiptapEditor = () => {
   if (!editor) return null;
 
   return (
-    <div className='mx-auto flex w-[80%] flex-col gap-5 font-sans'>
+    <div className='mx-auto flex w-[70%] flex-col gap-5 font-sans'>
       <TiptapNodes editor={editor} />
       <EditorContent editor={editor} className='h-full' />
     </div>

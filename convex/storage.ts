@@ -1,8 +1,8 @@
 import { v } from 'convex/values';
-import { adminAuthAction } from './utils';
+import { adminAuthMutation } from './utils';
 import { query } from './_generated/server';
 
-export const generateUploadUrl = adminAuthAction({
+export const generateUploadUrl = adminAuthMutation({
   args: {},
   handler: async (ctx) => {
     return await ctx.storage.generateUploadUrl();
