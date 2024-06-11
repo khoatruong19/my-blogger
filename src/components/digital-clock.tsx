@@ -1,4 +1,4 @@
-import { getCurrentTime } from '@/app/utils/date';
+import { getCurrentTime } from '@/utils/date';
 import { useCallback, useEffect, useState } from 'react';
 import { format } from 'date-fns';
 

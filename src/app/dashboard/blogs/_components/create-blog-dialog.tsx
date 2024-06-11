@@ -41,6 +41,7 @@ const CreateBlogDialog = () => {
   const router = useRouter();
 
   const [thumbnailFile, setThumbnailFile] = useState<File | null>();
+  const [isLoading, setIsLoading] = useState(false);
 
   const form = useForm<z.infer<typeof createBlogFormSchema>>({
     resolver: zodResolver(createBlogFormSchema),
@@ -52,6 +53,7 @@ const CreateBlogDialog = () => {
 
   const onSubmit = async (values: z.infer<typeof createBlogFormSchema>) => {
     try {
+      setIsLoading(true);
       const postUrl = await generateUploadUrl();
       const result = await fetch(postUrl, {
         method: 'POST',
@@ -65,6 +67,8 @@ const CreateBlogDialog = () => {
       router.push(`/dashboard/blogs/${blogId}/edit`);
     } catch (error) {
       console.log(error);
+    } finally {
+      setIsLoading(false);
     }
   };
   return (
@@ -138,7 +142,7 @@ const CreateBlogDialog = () => {
               </DialogDescription>
             </DialogHeader>
             <DialogFooter>
-              <Button type='submit' className='font-bold'>
+              <Button disabled={isLoading} type='submit' className='font-bold'>
                 Create
               </Button>
             </DialogFooter>

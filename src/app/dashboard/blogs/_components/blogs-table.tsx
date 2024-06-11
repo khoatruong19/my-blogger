@@ -13,8 +13,15 @@ import Image from 'next/image';
 import { HiOutlineDotsHorizontal } from 'react-icons/hi';
 import BlogsPagination from './blogs-pagination';
 import Link from 'next/link';
+import { Doc } from '@convex/_generated/dataModel';
+import { format } from 'date-fns';
+import { getBlogStatus } from '@/utils/date';
 
-const BlogsTable = () => {
+type BlogsTableProps = {
+  blogs: Doc<'blogs'>[];
+};
+
+const BlogsTable = ({ blogs }: BlogsTableProps) => {
   return (
     <Card className='border-none'>
       <CardContent>
@@ -36,44 +43,55 @@ const BlogsTable = () => {
             </TableRow>
           </TableHeader>
           <TableBody>
-            {new Array(10).fill(0).map((_, idx) => (
-              <TableRow key={idx}>
-                <TableCell className='hidden sm:table-cell'>
-                  <Image
-                    alt='Product image'
-                    className='aspect-square rounded-md object-cover'
-                    height='64'
-                    src='https://statics.cdn.200lab.io/2023/06/interface-trong-golang-cach-dung-chinh-xac-2.jpg?width=500'
-                    width='64'
-                  />
-                </TableCell>
-                <TableCell className='font-medium'>Golang Interface</TableCell>
-                <TableCell>
-                  <Badge variant='outline'>Draft</Badge>
-                </TableCell>
-                <TableCell>10</TableCell>
-                <TableCell>2</TableCell>
-                <TableCell className='hidden md:table-cell'>2023-07-12 10:42 AM</TableCell>
-                <TableCell className='hidden md:table-cell'>2023-07-12 10:42 AM</TableCell>
-                <TableCell>
-                  <DropdownMenu>
-                    <DropdownMenuTrigger asChild>
-                      <Button aria-haspopup='true' size='icon' variant='ghost'>
-                        <HiOutlineDotsHorizontal className='h-4 w-4' />
-                        <span className='sr-only'>Toggle menu</span>
-                      </Button>
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent align='end'>
-                      <DropdownMenuLabel>Actions</DropdownMenuLabel>
-                      <DropdownMenuItem asChild>
-                        <Link href={`/dashboard/blogs/123456/edit`}>Edit</Link>
-                      </DropdownMenuItem>
-                      <DropdownMenuItem>Delete</DropdownMenuItem>
-                    </DropdownMenuContent>
-                  </DropdownMenu>
-                </TableCell>
-              </TableRow>
-            ))}
+            {blogs.map((blog) => {
+              const status = getBlogStatus(blog.status);
+              return (
+                <TableRow key={blog._id}>
+                  <TableCell className='hidden sm:table-cell'>
+                    <Image
+                      alt='Product image'
+                      className='aspect-square rounded-md object-cover'
+                      height='64'
+                      src={blog.thumbnail.url}
+                      width='64'
+                    />
+                  </TableCell>
+                  <TableCell className='font-medium'>{blog.title}</TableCell>
+                  <TableCell>
+                    <Badge variant={status.variant}>{status.label}</Badge>
+                  </TableCell>
+                  <TableCell>10</TableCell>
+                  <TableCell>2</TableCell>
+                  <TableCell className='hidden md:table-cell'>
+                    {format(new Date(blog._creationTime), 'MM-dd-yyyy p')}
+                  </TableCell>
+                  <TableCell className='hidden md:table-cell'>
+                    {blog.publishedAt ? (
+                      format(new Date(String(blog.publishedAt)), 'MM-dd-yyyy p')
+                    ) : (
+                      <Badge variant='destructive'>Not yet</Badge>
+                    )}
+                  </TableCell>
+                  <TableCell>
+                    <DropdownMenu>
+                      <DropdownMenuTrigger asChild>
+                        <Button aria-haspopup='true' size='icon' variant='ghost'>
+                          <HiOutlineDotsHorizontal className='h-4 w-4' />
+                          <span className='sr-only'>Toggle menu</span>
+                        </Button>
+                      </DropdownMenuTrigger>
+                      <DropdownMenuContent align='end'>
+                        <DropdownMenuLabel>Actions</DropdownMenuLabel>
+                        <DropdownMenuItem asChild>
+                          <Link href={`/dashboard/blogs/${blog._id}/edit`}>Edit</Link>
+                        </DropdownMenuItem>
+                        <DropdownMenuItem>Delete</DropdownMenuItem>
+                      </DropdownMenuContent>
+                    </DropdownMenu>
+                  </TableCell>
+                </TableRow>
+              );
+            })}
           </TableBody>
         </Table>
       </CardContent>
